@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كينج ماريوت سبورت</title>
+    <style>
+        /* --- التصميم الاحترافي الفاتح --- */
+        :root {
+            --primary: #e63946;    /* الأحمر القتالي */
+            --bg: #f8f9fa;         /* خلفية هادية */
+            --card: #ffffff;       /* كروت بيضاء */
+            --text: #2b2d42;       /* نص واضح */
+            --whatsapp: #25d366;   /* أخضر الواتساب */
+            --shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        body {
+            margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--bg); color: var(--text);
+        }
+
+        .header-main { padding: 40px 20px; text-align: center; }
+        .header-main h1 { font-size: 2.5rem; color: var(--primary); margin: 0; }
+
+        /* شبكة العرض (3 في الصف) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px; max-width: 1200px; margin: 0 auto; padding: 20px;
+        }
+
+        /* كارت الأكاديمية */
+        .academy-card {
+            background: var(--card); border-radius: 20px; padding: 30px 15px;
+            text-decoration: none; color: var(--text); box-shadow: var(--shadow);
+            transition: 0.3s; display: flex; flex-direction: column; align-items: center;
+            border: 1px solid transparent;
+        }
+        .academy-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+        .img-circle {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--primary); margin-bottom: 15px;
+        }
+
+        /* نظام الصفحات الفرعية (ID Target) */
+        .sub-page {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: var(--bg);
+            z-index: 1000; overflow-y: auto;
+        }
+        .sub-page:target { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .nav-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 30px; background: #fff; box-shadow: var(--shadow);
+            position: sticky; top: 0;
+        }
+        .back-btn { text-decoration: none; color: #000; background: #eee; padding: 10px 20px; border-radius: 10px; font-weight: bold; }
+
+        /* كروت التمارين داخل الأكاديمية */
+        .exercise-card {
+            background: var(--card); border-radius: 15px; overflow: hidden;
+            box-shadow: var(--shadow); text-align: center; padding-bottom: 20px;
+        }
+        .exercise-card img { width: 100%; height: 180px; object-fit: cover; }
+
+        .wa-btn {
+            display: inline-block; background: var(--whatsapp); color: #fff;
+            padding: 12px 25px; border-radius: 12px; text-decoration: none;
+            font-weight: bold; margin-top: 10px; transition: 0.2s;
+        }
+        .wa-btn:hover { background: #1ebe57; transform: scale(1.05); }
+
+        /* الموبايل (واحد في الصف) */
+        @media (max-width: 850px) { .grid-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="header-main">
+        <h1>أكاديميات القتال المعتمدة</h1>
+        <p>اختر الأكاديمية الأقرب إليك للحجز</p>
+    </div>
+
+    <div class="grid-container">
+
+        <a href="#ac-eyad" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=200" class="img-circle">
+            <h2>أكاديمية إياد</h2>
+            <p>فرع القاهرة</p>
+        </a>
+
+        <a href="#ac-ali" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1599058917233-57c0e620c397?w=200" class="img-circle">
+            <h2>أكاديمية علي</h2>
+            <p>فرع الجيزة</p>
+        </a>
+
+        <a href="#ac-omar" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1517438476312-10d79c67750d?w=200" class="img-circle">
+            <h2>أكاديمية عمر</h2>
+            <p>فرع الإسكندرية</p>
+        </a>
+
+        <a href="#ac-asad" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=200" class="img-circle">
+            <h2>أكاديمية الأسد</h2>
+            <p>فرع طنطا</p>
+        </a>
+
+        <a href="#ac-nasr" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?w=200" class="img-circle">
+            <h2>أكاديمية النسر</h2>
+            <p>فرع المنصورة</p>
+        </a>
+
+        <a href="#ac-tiger" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?w=200" class="img-circle">
+            <h2>أكاديمية تايجر</h2>
+            <p>فرع المعادي</p>
+        </a>
+
+        <a href="#ac-heroes" class="academy-card">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=200" class="img-circle">
+            <h2>أكاديمية الأبطال</h2>
+            <p>فرع أكتوبر</p>
+        </a>
+
+    </div>
+
+    <div id="ac-eyad" class="sub-page">
+        <div class="nav-bar">
+            <a href="#" class="back-btn">🔙 رجوع</a>
+            <h2>تمارين أكاديمية إياد</h2>
+            <div style="width:50px"></div>
+        </div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1599058917233-57c0e620c397?w=400">
+                <h3>MMA</h3>
+                <a href="https://wa.me/201019339230?text=حجز MMA أكاديمية إياد" class="wa-btn">حجز واتساب</a>
+            </div>
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1530549387074-d5629d755720?w=400">
+                <h3>سباحة</h3>
+                <a href="https://wa.me/201019339230?text=حجز سباحة أكاديمية إياد" class="wa-btn">حجز واتساب</a>
+            </div>
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400">
+                <h3>باسكت</h3>
+                <a href="https://wa.me/201019339230?text=حجز باسكت أكاديمية إياد" class="wa-btn">حجز واتساب</a>
+            </div>
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=400">
+                <h3>كيك بوكسينج</h3>
+                <a href="https://wa.me/201019339230?text=حجز كيك بوكسينج أكاديمية إياد" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-ali" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين أكاديمية علي</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?w=400">
+                <h3>كاراتيه</h3>
+                <a href="https://wa.me/201019339230?text=حجز كاراتيه أكاديمية علي" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-omar" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين أكاديمية عمر</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1517438476312-10d79c67750d?w=400">
+                <h3>جودو</h3>
+                <a href="https://wa.me/201019339230?text=حجز جودو أكاديمية عمر" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-asad" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين أكاديمية الأسد</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400">
+                <h3>ملاكمة</h3>
+                <a href="https://wa.me/201019339230?text=حجز ملاكمة أكاديمية الأسد" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-nasr" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين أكاديمية النسر</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?w=400">
+                <h3>تايكوندو</h3>
+                <a href="https://wa.me/201019339230?text=حجز تايكوندو أكاديمية النسر" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-tiger" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين أكاديمية تايجر</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?w=400">
+                <h3>لياقة بدنية</h3>
+                <a href="https://wa.me/201019339230?text=حجز لياقة أكاديمية تايجر" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="ac-heroes" class="sub-page">
+        <div class="nav-bar"><a href="#" class="back-btn">🔙 رجوع</a><h2>تمارين الأبطال</h2><div style="width:50px"></div></div>
+        <div class="grid-container">
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?w=400">
+                <h3>كونغ فو</h3>
+                <a href="https://wa.me/201019339230?text=حجز كونغ فو أكاديمية الأبطال" class="wa-btn">حجز واتساب</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
